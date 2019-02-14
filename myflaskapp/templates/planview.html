@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+{% if result['type_id'] == 1 %}
+    <h1 align="center">You are currently a default user!</h1>
+    <form action="{{ url_for('changeplan') }}" method="POST">
+            <div class="card bg-succe" align="center">
+                    <input type="submit" name="Upgrade to Premium!" value="Upgrade to Premium" class="btn btn-primary btn-danger"></button>
+            </div>
+{% elif result['type_id'] == 2 %}
+<h1>You are a premium user! You are eligible for discounts!</h1>
+{% else %}
+<h1> Your status may be invalid, contact admin</h1>
+{% endif %}
+</form>
+
+{% endblock %}

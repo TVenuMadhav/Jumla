@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+<h1>Dashboard <small>Welcome {{session.email}} Dude!</small></h1>
+{% if not dude %}
+<br>
+<br>
+<br>
+<br>
+<h1 align="center">Congrats! You have subscribed to all videos</h1>
+<p align="center">Check your 'My Subscription Library' to start streaming!!</p>
+{% else %}
+{% for element in dude %}
+<form action="{{ url_for('subscribe') }}" method="POST">
+<div class="card bg-succe" align="center">
+<h1><u>{{ element['title'] }}</u></h1>
+{% if element['title'] == 'pulpfiction' %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qMvb5jUMR80" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% else %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9WX7NdgD-Ps" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% endif %}
+<h2>${{ element['price_day'] }}</h2>
+<select name = "OptionSelect">
+    {% for color in colors %}
+        <option name = "OptionSelect" value="{{color}}" SELECTED>{{color}}</option>"
+    {% endfor %}
+</select>
+<button type="submit" name="ButtonSelect" class="btn btn-danger" value = {{ element['video_id'] }}>Subscribe</button>
+</div>
+</form>
+{% endfor %}
+{% endif %}
+<script src="http://vjs.zencdn.net/4.12/video.js"></script>
+{% endblock %}

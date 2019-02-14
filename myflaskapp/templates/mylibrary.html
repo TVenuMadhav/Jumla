@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1><u>List of subscriptions</u></h1>
+{% for video in res %}
+<h3>Video id:{{ video['video_id'] }} </h3>
+<h3>Title:{{ video['title'] }}</h3>
+<img src="{{ url_for('static',filename = video['title']) }}" width="200" height="200">
+<h3>Daily Price : {{ video['price_day'] }}</h1>
+<br>
+<br>
+{% endfor %}
+
+{% endblock %}

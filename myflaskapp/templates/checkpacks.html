@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<style>
+    body {
+  margin: 40px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  grid-gap: 50px;
+  background-color: #FF0034;
+  color: #444;
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+</style>
+This is were you see packs!
+<div align="center">
+<h1>List of Packs</h1>
+<form action="{{ url_for('subscribe_pack') }}" method="POST"></form>
+<div class="wrapper">
+        <div class="box a">A</div>
+        <div class="box b">B</div>
+        <div class="box c">C</div>
+      </div>
+        <button type="submit" name="ButtonSelect" class="btn btn-danger">Subscribe Pack</button>
+      </form>
+    </div>
+{% endblock %}
